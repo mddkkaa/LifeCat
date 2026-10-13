@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <div class="header__actions">
+                <a href="login.html" class="btn btn--ghost">Вход</a>
+                <a href="register.html" class="btn btn--primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth">
+        <div class="auth__card">
+            <h1 class="auth__title">Создать аккаунт</h1>
+            <p class="auth__subtitle">
+                Аккаунт — это ты, игрок. Кота создашь на следующем шаге.
+            </p>
+
+            <form id="register-form" class="auth__form" novalidate>
+                <div class="form-field">
+                    <label for="username">Логин</label>
+                    <input type="text" id="username" name="username" autocomplete="username"
+                           placeholder="Например, murka_2010" minlength="3" maxlength="20" required>
+                    <small class="form-hint">3–20 символов: буквы, цифры, дефис. Это НЕ имя кота.</small>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email"
+                           placeholder="cat@forest.ru" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" autocomplete="new-password"
+                           placeholder="Минимум 6 символов" minlength="6" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="password2">Повтори пароль</label>
+                    <input type="password" id="password2" name="password2" autocomplete="new-password"
+                           placeholder="Ещё раз" minlength="6" required>
+                </div>
+
+                <label class="form-checkbox">
+                    <input type="checkbox" id="agree" required>
+                    <span>Я согласен(на) с <a href="#">правилами</a> игры</span>
+                </label>
+
+                <div id="form-message" class="form-message" role="alert"></div>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--block">
+                    Создать аккаунт
+                </button>
+            </form>
+
+            <p class="auth__switch">
+                Уже есть аккаунт? <a href="login.html">Войти</a>
+            </p>
+        </div>
+    </main>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+    
+</body>
+</html>

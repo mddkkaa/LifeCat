@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание кота — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <div class="header__actions">
+                <span class="user-badge" id="user-badge">🐾 ...</span>
+                <button class="btn btn--ghost" id="logout-btn">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth">
+        <div class="auth__card auth__card--wide">
+            <h1 class="auth__title">Создай своего кота</h1>
+            <p class="auth__subtitle">
+                Помни: это твой единственный кот. Выбирай с умом.
+            </p>
+
+            <form id="create-cat-form" class="auth__form" novalidate>
+
+                <div class="form-field">
+                    <label for="cat-name">Имя кота</label>
+                    <input type="text" id="cat-name" name="cat-name"
+                           placeholder="Например, Огнелап" minlength="2" maxlength="20" required>
+                    <small class="form-hint">2–20 символов. Это имя персонажа, не логин.</small>
+                </div>
+
+                <div class="form-field">
+                    <label>Пол</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="male" checked>
+                            <span>♂ Кот</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="female">
+                            <span>♀ Кошка</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="tribe">Племя</label>
+                    <select id="tribe" name="tribe" required>
+                        <option value="">— Выбери племя —</option>
+                        <option value="thunder">⚡ Племя Грозы — смелые воины леса</option>
+                        <option value="river">💧 Племя Реки — ловкие рыболовы</option>
+                        <option value="shadow">🌑 Племя Тени — скрытные охотники</option>
+                        <option value="wind">🍃 Племя Ветра — быстрые бегуны</option>
+                    </select>
+                </div>
+
+                <div id="form-message" class="form-message" role="alert"></div>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--block">
+                    Начать путь
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/cat-api.js"></script>
+    <script src="js/create-cat.js"></script>
+</body>
+</html>

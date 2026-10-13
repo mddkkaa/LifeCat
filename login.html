@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — Дикие Коты</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">Дикие Коты</span>
+            </a>
+            <div class="header__actions">
+                <a href="login.html" class="btn btn--ghost">Вход</a>
+                <a href="register.html" class="btn btn--primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth">
+        <div class="auth__card">
+            <h1 class="auth__title">Вход в игру</h1>
+            <p class="auth__subtitle">С возвращением в лагерь, воин.</p>
+
+            <form id="login-form" class="auth__form" novalidate>
+                <div class="form-field">
+                    <label for="username">Имя кота</label>
+                    <input type="text" id="username" name="username" autocomplete="username"
+                           placeholder="Например, Огнелап" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" autocomplete="current-password"
+                           placeholder="Твой пароль" required>
+                </div>
+
+                <div id="form-message" class="form-message" role="alert"></div>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--block">
+                    Войти
+                </button>
+            </form>
+
+            <p class="auth__switch">
+                Ещё нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+            </p>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

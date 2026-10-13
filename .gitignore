@@ -1,0 +1,18 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# База данных (не заливаем — она создастся на сервере)
+*.db
+*.db-shm
+*.db-wal
+
+# Загруженные файлы (аватарки)
+server/uploads/
+
+# Мусор системы
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
