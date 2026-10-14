@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Окрас кота — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="my-cat.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <div class="header__actions">
+                <span class="user-badge" id="user-badge">🐾 ...</span>
+                <button class="btn btn--ghost" id="logout-btn">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth">
+        <div class="auth__card auth__card--wide">
+            <h1 class="auth__title">Окрас кота</h1>
+            <p class="auth__subtitle">Выбери цвет шерсти и цвет глаз.</p>
+
+            <div class="cat-preview" id="cat-preview">
+                <div class="cat-preview__body" id="cat-preview-body"></div>
+            </div>
+
+            <form id="color-form" class="auth__form" novalidate>
+
+                <div class="form-field">
+                    <label for="fur-color">Цвет шерсти</label>
+                    <div class="color-row">
+                        <input type="color" id="fur-color" value="#d98c3f">
+                        <input type="text" id="fur-color-text" value="#d98c3f" maxlength="7"
+                               pattern="^#[0-9a-fA-F]{6}$">
+                    </div>
+                    <small class="form-hint">Нажми на квадрат или впиши HEX-код.</small>
+                </div>
+
+                <div class="form-field">
+                    <label for="eye-color">Цвет глаз</label>
+                    <div class="color-row">
+                        <input type="color" id="eye-color" value="#6ea36e">
+                        <input type="text" id="eye-color-text" value="#6ea36e" maxlength="7"
+                               pattern="^#[0-9a-fA-F]{6}$">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>Быстрые окрасы</label>
+                    <div class="color-palette" id="palette"></div>
+                </div>
+
+                <div id="form-message" class="form-message" role="alert"></div>
+
+                <div class="color-actions">
+                    <a href="my-cat.html" class="btn btn--ghost">Назад</a>
+                    <button type="submit" class="btn btn--primary btn--lg">Сохранить окрас</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/cat-api.js"></script>
+    <script src="js/cat-svg.js"></script>
+    <script src="js/create-color.js"></script>
+</body>
+</html>

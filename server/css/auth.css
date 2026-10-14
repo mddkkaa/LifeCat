@@ -1,0 +1,520 @@
+/* ---------- Контейнер страницы входа/регистрации ---------- */
+.auth {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(217,140,63,.12), transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(110,163,110,.10), transparent 40%),
+        var(--bg);
+}
+
+.auth__card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+.auth__title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    text-align: center;
+}
+.auth__subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* ---------- Форма ---------- */
+.auth__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.form-field label {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+.form-field input {
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+    transition: .2s;
+}
+.form-field input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg);
+}
+.form-field input.input--error {
+    border-color: #d95c5c;
+}
+.form-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+.form-checkbox a { color: var(--primary); }
+.form-checkbox input { margin-top: 3px; }
+
+/* ---------- Сообщения об ошибках / успехе ---------- */
+.form-message {
+    font-size: 14px;
+    min-height: 18px;
+    text-align: center;
+}
+.form-message--error { color: #e07878; }
+.form-message--success { color: #8fc98f; }
+
+/* ---------- Кнопка на всю ширину ---------- */
+.btn--block {
+    width: 100%;
+    text-align: center;
+}
+
+.auth__switch {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 20px;
+}
+.auth__switch a { color: var(--primary); font-weight: 600; }
+/* Широкая карточка */
+.auth__card--wide { max-width: 560px; }
+
+/* Радио-группа */
+.radio-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.radio-option {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    cursor: pointer;
+    transition: .2s;
+    font-size: 15px;
+}
+.radio-option:hover { border-color: var(--primary); }
+.radio-option input { accent-color: var(--primary); }
+.radio-option:has(input:checked) {
+    border-color: var(--primary);
+    background: rgba(217,140,63,.08);
+}
+
+/* Select */
+.form-field select {
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+}
+.form-field select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Информация о коте */
+.cat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+}
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 15px;
+}
+.stat-row b { color: var(--primary); }
+
+/* Баннер удаления */
+.deletion-banner {
+    margin: 20px 0;
+    padding: 18px;
+    border: 1px solid #d95c5c;
+    background: rgba(217,92,92,.08);
+    border-radius: var(--radius);
+    text-align: center;
+}
+.deletion-banner p { margin-bottom: 8px; }
+
+/* Заблокированная игра */
+.game--locked::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    pointer-events: none;
+    z-index: 1;
+}
+/* ---------- Страница "Мой кот" ---------- */
+.my-cat {
+    padding: 32px 20px 60px;
+    min-height: calc(100vh - 70px);
+    background:
+        radial-gradient(circle at 20% 10%, rgba(217,140,63,.10), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(110,163,110,.08), transparent 40%),
+        var(--bg);
+}
+
+.my-cat__layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+    .my-cat__layout { grid-template-columns: 1fr; }
+}
+
+/* Кнопка "В игровое поле" */
+.btn--enter-game {
+    margin-bottom: 20px;
+    font-size: 17px;
+    padding: 16px 28px;
+}
+.btn--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* Карточка кота */
+.cat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 26px;
+}
+.cat-card__avatar {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cat-card__avatar svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.cat-card__name {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.cat-card__subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+.cat-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.cat-card__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 15px;
+}
+.cat-card__row dt { color: var(--text-muted); }
+.cat-card__row dd { font-weight: 600; color: var(--text); }
+
+/* Настройки */
+.settings {
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.settings summary {
+    padding: 16px 22px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    list-style: none;
+    transition: .2s;
+}
+.settings summary::-webkit-details-marker { display: none; }
+.settings summary::after {
+    content: "▾";
+    float: right;
+    color: var(--primary);
+}
+.settings[open] summary::after { content: "▴"; }
+.settings summary:hover { background: var(--bg-alt); }
+
+.settings__body {
+    padding: 0 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-top: 1px solid var(--border);
+}
+.settings__block h3 {
+    font-size: 16px;
+    margin: 20px 0 12px;
+}
+.settings__hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+.settings__block--danger {
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+}
+.btn--danger {
+    background: transparent;
+    color: #e07878;
+    border: 1px solid #e07878;
+}
+.btn--danger:hover {
+    background: #e07878;
+    color: #1a1a1a;
+}
+
+/* Правая навигация */
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: sticky;
+    top: 90px;
+}
+.side-nav__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 15px;
+    transition: .2s;
+}
+.side-nav__link:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateX(4px);
+}
+.side-nav__icon { font-size: 20px; }
+/* Кнопка окраса под карточкой */
+.btn--color-link {
+    margin-top: 20px;
+}
+
+/* Превью кота */
+.cat-preview {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 28px;
+}
+.cat-preview__body {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-alt);
+    border: 3px solid var(--border);
+    padding: 12px;
+    transition: .2s;
+}
+.cat-preview__body svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Строка "цвет + hex" */
+.color-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.color-row input[type="color"] {
+    width: 56px;
+    height: 44px;
+    padding: 2px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-alt);
+    cursor: pointer;
+}
+.color-row input[type="text"] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    color: var(--text);
+    font-family: monospace;
+    font-size: 15px;
+}
+.color-row input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Палитра */
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+}
+.palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 8px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: .2s;
+    color: var(--text);
+    font-family: inherit;
+}
+.palette-item:hover { border-color: var(--primary); transform: translateY(-2px); }
+.palette-item__fur,
+.palette-item__eye {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: block;
+}
+.palette-item__eye {
+    width: 20px;
+    height: 20px;
+    margin-top: -22px;
+    margin-left: 20px;
+    border-width: 2px;
+}
+.palette-item__name {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Кнопки внизу формы */
+.color-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.color-actions .btn { flex: 1; text-align: center; }
+/* Картинка-аватар */
+.cat-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+}
+
+.avatar-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+}
+.btn--sm {
+    padding: 8px 14px;
+    font-size: 13px;
+}
+.avatar-hint {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+.cat-card__row--clickable {
+    cursor: pointer;
+    transition: background .15s;
+}
+.cat-card__row--clickable:hover {
+    background: var(--surface);
+}
+.cat-card__row--clickable .row-arrow {
+    display: inline-block;
+    margin-left: 8px;
+    color: var(--primary);
+    transition: transform .2s;
+}
+.cat-card__row--clickable.cat-card__row--open .row-arrow {
+    transform: rotate(180deg);
+}
+
+.cat-card__details {
+    padding: 12px 16px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    margin-top: -4px;
+}
+.cat-card__details p { margin-bottom: 6px; }
+.cat-card__details .hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой кот — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body data-page="my-cat">
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <div class="header__actions">
+                <span class="user-badge" id="user-badge">🐾 ...</span>
+                <button class="btn btn--ghost" id="logout-btn">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="my-cat">
+        <div class="container my-cat__layout">
+
+            <section class="my-cat__main">
+
+                <a href="#" class="btn btn--primary btn--lg btn--block btn--enter-game" id="enter-game-btn">
+                    🐾 В игровое поле
+                </a>
+
+                <div class="cat-card">
+                    <div class="cat-card__avatar" id="cat-avatar"></div>
+
+                    <div class="avatar-controls">
+                        <label for="avatar-input" class="btn btn--ghost btn--sm">📷 Загрузить аватар</label>
+                        <input type="file" id="avatar-input" accept="image/*" hidden>
+                        <button type="button" class="btn btn--ghost btn--sm" id="avatar-remove" hidden>Удалить аватар</button>
+                    </div>
+                    <p class="avatar-hint">До 600×400 px, до 3.4 МБ. Если не загружена — показывается кот.</p>
+
+                    <h1 class="cat-card__name" id="cat-name">—</h1>
+                    <p class="cat-card__subtitle" id="cat-subtitle">—</p>
+
+                    <dl class="cat-card__list">
+                        <div class="cat-card__row">
+                            <dt>Пол</dt>
+                            <dd id="cat-gender">—</dd>
+                        </div>
+
+                        <div class="cat-card__row cat-card__row--clickable" id="moons-row">
+                            <dt>Луны</dt>
+                            <dd>
+                                <span id="cat-moons">—</span>
+                                <span class="row-arrow">▾</span>
+                            </dd>
+                        </div>
+                        <div class="cat-card__details" id="moons-details" hidden>
+                            <p><strong>Дата регистрации:</strong> <span id="cat-created-date">—</span></p>
+                            <p class="hint">1 луна = 2 реальных дня. Кот растёт со временем.</p>
+                        </div>
+
+                        <div class="cat-card__row">
+                            <dt>Должность</dt>
+                            <dd id="cat-rank">—</dd>
+                        </div>
+                        <div class="cat-card__row">
+                            <dt>Племя</dt>
+                            <dd id="cat-tribe">—</dd>
+                        </div>
+                        <div class="cat-card__row">
+                            <dt>Активность</dt>
+                            <dd><span id="cat-activity">0</span> / 100</dd>
+                        </div>
+                        <div class="cat-card__row">
+                            <dt>ID кота</dt>
+                            <dd>#<span id="cat-id">—</span></dd>
+                        </div>
+                    </dl>
+
+                    <a href="create-color.html" class="btn btn--primary btn--block btn--color-link" id="color-btn">
+                        🎨 Создать окрас
+                    </a>
+                </div>
+
+                <details class="settings" id="settings">
+                    <summary>⚙️ Настройки</summary>
+
+                    <div class="settings__body">
+
+                        <div class="settings__block">
+                            <h3>Сменить пароль</h3>
+                            <form id="change-password-form" class="auth__form" novalidate>
+                                <div class="form-field">
+                                    <label for="old-password">Текущий пароль</label>
+                                    <input type="password" id="old-password" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="new-password">Новый пароль</label>
+                                    <input type="password" id="new-password" minlength="6" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="new-password2">Повтор нового</label>
+                                    <input type="password" id="new-password2" minlength="6" required>
+                                </div>
+                                <div class="form-message" id="password-message"></div>
+                                <button type="submit" class="btn btn--primary">Сохранить пароль</button>
+                            </form>
+                        </div>
+
+                        <div class="settings__block">
+                            <h3>Сменить email</h3>
+                            <form id="change-email-form" class="auth__form" novalidate>
+                                <div class="form-field">
+                                    <label for="new-email">Новый email</label>
+                                    <input type="email" id="new-email" required>
+                                </div>
+                                <div class="form-message" id="email-message"></div>
+                                <button type="submit" class="btn btn--primary">Сохранить email</button>
+                            </form>
+                        </div>
+
+                        <div class="settings__block settings__block--danger">
+                            <h3>Удалить персонажа</h3>
+                            <p class="settings__hint" id="delete-hint">
+                                Удаление займёт 7 дней. Всё это время играть нельзя, но можно отменить.
+                                Второго кота создать нельзя, пока старый не удалён.
+                            </p>
+
+                            <div id="deletion-banner" class="deletion-banner" hidden>
+                                <p><strong>Кот помечен на удаление.</strong></p>
+                                <p>Осталось дней: <span id="days-left">—</span>.</p>
+                                <button class="btn btn--primary" id="cancel-deletion-btn">Отменить удаление</button>
+                            </div>
+
+                            <button class="btn btn--danger" id="delete-cat-btn">Удалить кота</button>
+                        </div>
+
+                    </div>
+                </details>
+
+            </section>
+
+            <aside class="my-cat__side">
+                <nav class="side-nav">
+                    <a href="#" class="side-nav__link" id="about-tribe-link">
+                        <span class="side-nav__icon">🌿</span>
+                        <span>О племени</span>
+                    </a>
+                    <a href="index.html" class="side-nav__link">
+                        <span class="side-nav__icon">📖</span>
+                        <span>Об игре</span>
+                    </a>
+                    <a href="#" class="side-nav__link" id="rules-link">
+                        <span class="side-nav__icon">📜</span>
+                        <span>Правила</span>
+                    </a>
+                </nav>
+            </aside>
+
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/cat-api.js"></script>
+    <script src="js/cat-svg.js"></script>
+    <script src="js/my-cat.js"></script>
+</body>
+</html>

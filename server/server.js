@@ -17,7 +17,7 @@ const DELETION_DAYS = 7;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static(__dirname));
 
 // ---------- Загрузка аватарок ----------
 

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeCat — онлайн-игра о племенах диких котов</title>
+    <meta name="description" content="Онлайн-игра о диких котах: создай своего кота, выбери племя, охотись, сражайся и стань предводителем.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <nav class="nav">
+                <a href="#about" class="nav__link">Об игре</a>
+                <a href="#tribes" class="nav__link">Племена</a>
+                <a href="#ranks" class="nav__link">Ранги</a>
+                <a href="#faq" class="nav__link">FAQ</a>
+            </nav>
+            <div class="header__actions">
+                <a href="login.html" class="btn btn--ghost">Вход</a>
+                <a href="register.html" class="btn btn--primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="hero__overlay"></div>
+        <div class="container hero__inner">
+            <h1 class="hero__title">Стань воином племени</h1>
+            <p class="hero__subtitle">
+                Создай своего кота, выбери племя, охоться, сражайся за территорию
+                и однажды получи девять жизней предводителя.
+            </p>
+            <div class="hero__actions">
+                <a href="#" class="btn btn--primary btn--lg">Начать игру</a>
+                <a href="#about" class="btn btn--ghost btn--lg">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Об игре -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section__title">Об игре</h2>
+            <p class="section__lead">
+                «LifeCat» — браузерная онлайн-игра о жизни племён диких котов.
+                Ты начинаешь котёнком, проходишь путь оруженосца, становишься воином,
+                а затем — глашатаем и предводителем. Каждый день в лесу что-то происходит:
+                охота, патрули, стычки на границах, болезни, союзы и предательства.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature__icon">🐭</div>
+                    <h3 class="feature__title">Охота и выживание</h3>
+                    <p class="feature__text">Добывай дичь, корми племя и следи за сытостью и здоровьем.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">⚔️</div>
+                    <h3 class="feature__title">Бои за территорию</h3>
+                    <p class="feature__text">Пошаговые сражения с другими котами, приёмы и тактика.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">🌙</div>
+                    <h3 class="feature__title">Живой мир</h3>
+                    <p class="feature__text">Смена дня и ночи, сезоны, погода и события в лагере.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">👑</div>
+                    <h3 class="feature__title">Путь к власти</h3>
+                    <p class="feature__text">Расти в ранге, зарабатывай репутацию и веди племя за собой.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Племена -->
+    <section id="tribes" class="section section--alt">
+        <div class="container">
+            <h2 class="section__title">Выбери своё племя</h2>
+            <p class="section__lead">Четыре племени — четыре характера. У каждого свои земли и обычаи.</p>
+
+            <div class="tribes">
+                <article class="tribe tribe--thunder">
+                    <h3 class="tribe__name">Грозовое Племя</h3>
+                    <p class="tribe__desc">Смелые и гордые воины леса. Ценят честь и отвагу.</p>
+                </article>
+                <article class="tribe tribe--river">
+                    <h3 class="tribe__name">Речное Племя</h3>
+                    <p class="tribe__desc">Ловкие рыбаки и пловцы. Спокойные и мудрые.</p>
+                </article>
+                <article class="tribe tribe--shadow">
+                    <h3 class="tribe__name">Племя Теней</h3>
+                    <p class="tribe__desc">Скрытные охотники болот. Хитрость — их оружие.</p>
+                </article>
+                <article class="tribe tribe--wind">
+                    <h3 class="tribe__name">Племя Ветра</h3>
+                    <p class="tribe__desc">Быстрые и выносливые коты пустошей. Свободолюбивые.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ранги -->
+    <section id="ranks" class="section">
+        <div class="container">
+            <h2 class="section__title">Путь кота</h2>
+            <ol class="ranks">
+                <li class="rank"><span class="rank__num">1</span><div><h3>Котёнок</h3><p>Ты только родился в лагере. Учись и играй.</p></div></li>
+                <li class="rank"><span class="rank__num">2</span><div><h3>Оруженосец</h3><p>Тренируйся под руководством наставника.</p></div></li>
+                <li class="rank"><span class="rank__num">3</span><div><h3>Воин</h3><p>Охоться, патрулируй, сражайся за племя.</p></div></li>
+                <li class="rank"><span class="rank__num">4</span><div><h3>Глашатай</h3><p>Правая лапа предводителя. Управляй патрулями.</p></div></li>
+                <li class="rank"><span class="rank__num">5</span><div><h3>Предводитель</h3><p>Девять жизней. Веди племя и решай его судьбу.</p></div></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section--alt">
+        <div class="container">
+            <h2 class="section__title">Частые вопросы</h2>
+            <div class="faq">
+                <details class="faq__item">
+                    <summary>Это бесплатно?</summary>
+                    <p>Да, базовый доступ к игре бесплатный. Донат — только косметика и удобства.</p>
+                </details>
+                <details class="faq__item">
+                    <summary>Нужно ли читать книги?</summary>
+                    <p>Это желательно, но необязательно. Вся механика игры понятна в самой игре.</p>
+                </details>
+                <details class="faq__item">
+                    <summary>Можно ли играть с телефона?</summary>
+                    <p>Да, интерфейс адаптируется под мобильные устройства.</p>
+                </details>
+                <details class="faq__item">
+                    <summary>Когда запуск?</summary>
+                    <p>Игра в разработке. Следи за обновлениями на сайте.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="cta">
+        <div class="container cta__inner">
+            <h2 class="cta__title">Готов начать свой путь?</h2>
+            <p class="cta__text">Создай кота и присоединяйся к племени прямо сейчас.</p>
+            <a href="#" class="btn btn--primary btn--lg">Создать кота</a>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <p>© 2026 LifeCat. Фан-проект по мотивам книг о диких котах.</p>
+            <div class="footer__links">
+                <a href="#">Правила</a>
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/session.js"></script>
+</body>
+</html>

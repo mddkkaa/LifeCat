@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лагерь — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body data-page="game">
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <div class="header__actions">
+                <span class="user-badge" id="user-badge">🐾 ...</span>
+                <button class="btn btn--ghost" id="logout-btn">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth">
+        <div class="auth__card auth__card--wide">
+            <h1 class="auth__title" id="cat-title">Лагерь</h1>
+            <p class="auth__subtitle" id="cat-subtitle">Тут скоро будет игра.</p>
+
+            <div id="cat-info" class="cat-info"></div>
+
+            <div id="deletion-banner" class="deletion-banner" hidden>
+                <p><strong>Кот помечен на удаление.</strong></p>
+                <p>Осталось дней: <span id="days-left">—</span>.</p>
+                <button class="btn btn--primary" id="cancel-deletion-btn">Отменить удаление</button>
+            </div>
+
+            <hr style="border-color: var(--border); margin: 24px 0;">
+
+            <h3 style="margin-bottom: 12px;">Опасная зона</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 12px;">
+                Удаление кота необратимо после истечения срока. До этого момента можно отменить.
+                Второго кота создать нельзя, пока старый не удалён.
+            </p>
+            <button class="btn btn--ghost" id="delete-cat-btn">Удалить кота (запросить)</button>
+        </div>
+    </main>
+
+    <script src="js/guard.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
