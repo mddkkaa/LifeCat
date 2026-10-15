@@ -1,7 +1,10 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
-const DB_PATH = path.join(__dirname, 'lifecat.db');
+// Если есть Volume (Railway) — пишем туда. Иначе — рядом с файлом.
+const DB_PATH = process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? path.join(process.env.RAILWAY_VOLUME_MOUNT_PATH, 'lifecat.db')
+    : path.join(__dirname, 'lifecat.db');
 const db = new Database(DB_PATH);
 
 db.pragma('journal_mode = WAL');

@@ -1,5 +1,5 @@
 // =========================================================
-//  LifeCat — сервер (полная версия)
+//  LifeCat — сервер (с поддержкой Volume на Railway)
 // =========================================================
 
 const express = require('express');
@@ -21,7 +21,12 @@ app.use(express.static(__dirname));
 
 // ---------- Загрузка аватарок ----------
 
-const uploadsDir = path.join(__dirname, 'uploads', 'avatars');
+// Если есть Volume (Railway) — кладём туда. Иначе — рядом с файлом.
+const UPLOADS_ROOT = process.env.RAILWAY_VOLUME_MOUNT_PATH
+    ? process.env.RAILWAY_VOLUME_MOUNT_PATH
+    : __dirname;
+
+const uploadsDir = path.join(UPLOADS_ROOT, 'uploads', 'avatars');
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
 const storage = multer.diskStorage({
@@ -34,7 +39,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage,
-    limits: { fileSize: 3565158 },
+    limits: { fileSize: 3565158 },   // 3.4 МБ
     fileFilter: (req, file, cb) => {
         if (!/^image\/(jpeg|png|webp|gif)$/.test(file.mimetype)) {
             return cb(new Error('Только изображения (jpg, png, webp, gif)'));
@@ -43,7 +48,13 @@ const upload = multer({
     },
 });
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(UPLOADS_ROOT, 'uploads')));
+
+// ---------- Главная ----------
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // ---------- Тестовые маршруты ----------
 
@@ -127,14 +138,10 @@ app.get('/api/me', auth.requireAuth, (req, res) => {
 //  КОТ
 // =========================================================
 
-// ---------- Получить своего кота ----------
-
 app.get('/api/cat', auth.requireAuth, (req, res) => {
     const cat = db.prepare('SELECT * FROM cats WHERE user_id = ?').get(req.user.id);
     res.json({ cat: cat || null });
 });
-
-// ---------- Создать кота ----------
 
 app.post('/api/cat', auth.requireAuth, (req, res) => {
     try {
@@ -166,8 +173,6 @@ app.post('/api/cat', auth.requireAuth, (req, res) => {
     }
 });
 
-// ---------- Сохранить окрас ----------
-
 app.put('/api/cat/color', auth.requireAuth, (req, res) => {
     const { fur, eye } = req.body;
     if (!/^#[0-9a-fA-F]{6}$/.test(fur)) return res.status(400).json({ error: 'Некорректный цвет шерсти' });
@@ -183,8 +188,6 @@ app.put('/api/cat/color', auth.requireAuth, (req, res) => {
     res.json({ success: true, cat: updated });
 });
 
-// ---------- Загрузить аватар ----------
-
 app.post('/api/cat/avatar', auth.requireAuth, (req, res) => {
     upload.single('avatar')(req, res, (err) => {
         if (err) return res.status(400).json({ error: err.message });
@@ -199,22 +202,18 @@ app.post('/api/cat/avatar', auth.requireAuth, (req, res) => {
     });
 });
 
-// ---------- Удалить аватар ----------
-
 app.delete('/api/cat/avatar', auth.requireAuth, (req, res) => {
     const cat = db.prepare('SELECT avatar FROM cats WHERE user_id = ?').get(req.user.id);
     if (!cat) return res.status(404).json({ error: 'Кота нет' });
 
     if (cat.avatar) {
-        const filePath = path.join(__dirname, cat.avatar.replace('/uploads/', 'uploads/'));
+        const filePath = path.join(UPLOADS_ROOT, cat.avatar.replace('/uploads/', 'uploads/'));
         if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
     }
 
     db.prepare('UPDATE cats SET avatar = NULL WHERE user_id = ?').run(req.user.id);
     res.json({ success: true });
 });
-
-// ---------- Запросить удаление кота ----------
 
 app.post('/api/cat/delete', auth.requireAuth, (req, res) => {
     const cat = db.prepare('SELECT * FROM cats WHERE user_id = ?').get(req.user.id);
@@ -234,8 +233,6 @@ app.post('/api/cat/delete', auth.requireAuth, (req, res) => {
     res.json({ success: true, deletionAvailableAt: availableAt });
 });
 
-// ---------- Отменить удаление ----------
-
 app.post('/api/cat/cancel-delete', auth.requireAuth, (req, res) => {
     db.prepare(`
         UPDATE cats
@@ -245,7 +242,7 @@ app.post('/api/cat/cancel-delete', auth.requireAuth, (req, res) => {
     res.json({ success: true });
 });
 
-// ---------- Сменить пароль ----------
+// ---------- Смена пароля/email ----------
 
 app.post('/api/change-password', auth.requireAuth, async (req, res) => {
     try {
@@ -268,8 +265,6 @@ app.post('/api/change-password', auth.requireAuth, async (req, res) => {
     }
 });
 
-// ---------- Сменить email ----------
-
 app.post('/api/change-email', auth.requireAuth, (req, res) => {
     const { email } = req.body;
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
@@ -286,4 +281,5 @@ app.post('/api/change-email', auth.requireAuth, (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`🐾 LifeCat server запущен: http://localhost:${PORT}`);
+    console.log(`🗄️  База данных: ${process.env.RAILWAY_VOLUME_MOUNT_PATH ? 'Volume' : 'локально'}`);
 });
