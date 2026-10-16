@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Племя Ветра — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tribe.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__paw">🐾</span>
+                <span class="logo__text">LifeCat</span>
+            </a>
+            <div class="header__actions">
+                <span class="user-badge" id="user-badge">🐾 ...</span>
+                <button class="btn btn--ghost" id="logout-btn">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="tribe-page">
+
+        <!-- Заголовок -->
+        <div class="container">
+            <h1 class="tribe-title">Племя Ветра</h1>
+        </div>
+
+        <!-- Карточка племени: герб + девиз -->
+        <div class="container">
+            <div class="tribe-hero">
+                <div class="tribe-hero__emblem" id="tribe-emblem">
+                    <!-- Сюда позже SVG-герб -->
+                    <span class="tribe-hero__placeholder">Герб</span>
+                </div>
+                <blockquote class="tribe-hero__motto">
+                    «Быстрее ветра, свободнее неба»
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- Три колонки -->
+        <div class="container">
+            <div class="tribe-layout">
+
+                <!-- ЛЕВАЯ КОЛОНКА: Общая информация -->
+                <section class="tribe-col tribe-col--info">
+                    <h2 class="tribe-col__title">О племени</h2>
+
+                    <div class="tribe-block">
+                        <h3>Описание</h3>
+                        <p>
+                            Племя Ветра — самое свободное из четырёх племён.
+                            Его коты живут на открытых пустошах, где гуляют
+                            ветра, и учатся бегать быстрее любого врага.
+                            Они не любят границ и оков, но чтят верность
+                            друг другу и своему племени.
+                        </p>
+                    </div>
+
+                    <div class="tribe-block">
+                        <h3>Характер</h3>
+                        <ul class="tribe-list">
+                            <li>Свободолюбивые</li>
+                            <li>Быстрые и выносливые</li>
+                            <li>Гордые, но не заносчивые</li>
+                            <li>Верные слову</li>
+                            <li>Не любят подчиняться, но уважают сильных</li>
+                        </ul>
+                    </div>
+
+                    <div class="tribe-block">
+                        <h3>Территория</h3>
+                        <p>
+                            Открытые равнины и пустоши, где почти нет деревьев,зато поля
+                            осыпают вересковые одеяла.
+                            Ветры гонят траву волнами, а ночью особенно холодно.
+                            На границе с другими племенами — каменные гряды.
+                        </p>
+                    </div>
+
+                    <div class="tribe-block">
+                        <h3>Традиции</h3>
+                        <ul class="tribe-list">
+                            <li>Совет у Высокого Камня на закате</li>
+                            <li>Поминовение павших — в день сильного ветра</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ЦЕНТР: Расписания -->
+                <section class="tribe-col tribe-col--schedule">
+                    <h2 class="tribe-col__title">Расписания</h2>
+
+                    <div class="tribe-block">
+                        <h3>Патрули</h3>
+                        <ul class="schedule-list">
+                            <li><span class="schedule-time">08:00</span> — утренний</li>
+                            <li><span class="schedule-time">12:00</span> — дневной</li>
+                            <li><span class="schedule-time">14:00</span> — дневной</li>
+                            <li><span class="schedule-time">18:00</span> — вечерний</li>
+                            <li><span class="schedule-time">21:00</span> — ночной</li>
+                        </ul>
+                    </div>
+
+                    <div class="tribe-block">
+                        <h3>Охоты</h3>
+                        <ul class="schedule-list">
+                            <li><span class="schedule-time">11:00</span> — большая охота</li>
+                            <li><span class="schedule-time">15:00</span> — дневная</li>
+                            <li><span class="schedule-time">19:00</span> — вечерняя</li>
+                        </ul>
+                    </div>
+
+                    <div class="tribe-block">
+                        <h3>Дозоры</h3>
+                        <p class="schedule-note">
+                            Свободное посещение. По собственному желанию —
+                            в любое время, минимум на полчаса.
+                        </p>
+                    </div>
+
+                    <div class="tribe-block">
+                        <h3>Собрания</h3>
+                        <ul class="schedule-list">
+                            <li><span class="schedule-time">18:00</span> — пн, ср, пт, сб, вс</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ПРАВАЯ КОЛОНКА: Иерархия -->
+                <section class="tribe-col tribe-col--hierarchy">
+                    <h2 class="tribe-col__title">Иерархия</h2>
+
+                    <ul class="hierarchy-list">
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Предводитель</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Глашатай</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Целитель</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Воины</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Оруженосцы</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Старейшины</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                        <li class="hierarchy-item">
+                            <span class="hierarchy-rank">Котята</span>
+                            <span class="hierarchy-name">— свободно —</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/tribe.js"></script>
+</body>
+</html>

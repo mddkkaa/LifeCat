@@ -1,0 +1,189 @@
+/* =========================================================
+   LifeCat — страницы племён
+   ========================================================= */
+
+.tribe-page {
+    padding: 40px 0 80px;
+    min-height: calc(100vh - 70px);
+    background:
+        radial-gradient(circle at 20% 10%, rgba(110,163,110,.08), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(217,140,63,.06), transparent 40%),
+        var(--bg);
+}
+
+/* ---------- Заголовок страницы ---------- */
+.tribe-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Карточка племени (герб + девиз) ---------- */
+.tribe-hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.tribe-hero__emblem {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tribe-hero__motto {
+    flex: 1;
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.4;
+    border-left: 3px solid var(--primary);
+    padding-left: 20px;
+}
+
+/* ---------- Три колонки ---------- */
+.tribe-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 1000px) {
+    .tribe-layout { grid-template-columns: 1fr 1fr; }
+    .tribe-col--hierarchy { grid-column: span 2; }
+}
+@media (max-width: 700px) {
+    .tribe-layout { grid-template-columns: 1fr; }
+    .tribe-col--hierarchy { grid-column: auto; }
+}
+
+/* ---------- Колонка ---------- */
+.tribe-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+
+.tribe-col__title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Блок внутри колонки ---------- */
+.tribe-block {
+    margin-bottom: 20px;
+}
+.tribe-block:last-child { margin-bottom: 0; }
+
+.tribe-block h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tribe-block p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.tribe-list {
+    list-style: none;
+    padding: 0;
+}
+.tribe-list li {
+    color: var(--text-muted);
+    font-size: 15px;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+}
+.tribe-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+/* ---------- Расписания ---------- */
+.schedule-list {
+    list-style: none;
+    padding: 0;
+}
+.schedule-list li {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+    color: var(--text-muted);
+    font-size: 15px;
+}
+.schedule-list li:last-child { border-bottom: none; }
+
+.schedule-time {
+    color: var(--primary);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    min-width: 56px;
+}
+
+.schedule-note {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* ---------- Иерархия ---------- */
+.hierarchy-list {
+    list-style: none;
+    padding: 0;
+}
+
+.hierarchy-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+.hierarchy-item:last-child { border-bottom: none; }
+
+.hierarchy-rank {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.hierarchy-name {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-style: italic;
+    text-align: right;
+}

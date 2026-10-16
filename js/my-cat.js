@@ -106,9 +106,16 @@ function renderCat(cat) {
 
     // Заглушки навигации
     document.getElementById('about-tribe-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('Страница «О племени» скоро появится.');
-    });
+    e.preventDefault();
+    const links = {
+        thunder: 'tribe-thunder.html',
+        river:   'tribe-river.html',
+        shadow:  'tribe-shadow.html',
+        wind:    'tribe-wind.html',
+    };
+    const file = links[cat.tribe] || 'index.html';
+    window.location.href = file;
+});
     document.getElementById('rules-link').addEventListener('click', (e) => {
         e.preventDefault();
         alert('Страница «Правила» скоро появится.');
