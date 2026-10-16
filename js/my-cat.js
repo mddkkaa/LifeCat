@@ -98,12 +98,11 @@ function renderCat(cat) {
     const colorBtn = document.getElementById('color-btn');
     if (cat.color_fur) colorBtn.textContent = '🎨 Изменить окрас';
 
-    // Кнопка "В игровое поле"
+        // Кнопка "В игровое поле"
     document.getElementById('enter-game-btn').addEventListener('click', (e) => {
         e.preventDefault();
-        alert('Игровое поле скоро появится. Пока это заглушка.');
+        window.location.href = 'game-field.html';
     });
-
     // Заглушки навигации
     document.getElementById('about-tribe-link').addEventListener('click', (e) => {
     e.preventDefault();

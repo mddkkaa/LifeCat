@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игровое поле — LifeCat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game-field.css">
+</head>
+<body class="game-body">
+
+    <!-- ============ ИГРОВОЕ ПОЛЕ (на весь экран) ============ -->
+    <section class="field" id="field">
+
+        <!-- Фон локации -->
+        <div class="field__bg" id="field-bg"></div>
+
+        <!-- Верхняя панель -->
+        <header class="field__top">
+            <a href="my-cat.html" class="btn btn--ghost field__btn-mycat">
+                Мой кот
+            </a>
+            <div class="field__info">
+                <span class="field__time" id="field-time">—:— · —</span>
+                <span class="field__season" id="field-season">—</span>
+                <span class="field__year" id="field-year">— год</span>
+            </div>
+        </header>
+
+        <!-- Нижняя панель действий -->
+        <footer class="field__bottom">
+            <button class="action-btn" data-action="sniff">
+                <span class="action-btn__icon">🐽</span>
+                <span class="action-btn__label">Нюхать</span>
+            </button>
+            <button class="action-btn" data-action="sleep">
+                <span class="action-btn__icon">💤</span>
+                <span class="action-btn__label">Спать</span>
+            </button>
+            <button class="action-btn" data-action="eat">
+                <span class="action-btn__icon">🍖</span>
+                <span class="action-btn__label">Есть</span>
+            </button>
+            <button class="action-btn" data-action="drink">
+                <span class="action-btn__icon">💧</span>
+                <span class="action-btn__label">Пить</span>
+            </button>
+            <button class="action-btn" data-action="hunt">
+                <span class="action-btn__icon">🐭</span>
+                <span class="action-btn__label">Охота</span>
+            </button>
+        </footer>
+
+    </section>
+
+    <!-- ============ ИНФОРМАЦИЯ ПОД ПОЛЕМ (прокрутка вниз) ============ -->
+    <section class="game-info">
+        <div class="game-info__grid">
+
+            <!-- ЛЕВАЯ: Семейное дерево -->
+            <div class="info-col">
+                <h2 class="info-col__title">Семья</h2>
+
+                <div class="family-block">
+                    <h3>Мать</h3>
+                    <p class="family-name" id="family-mother">— неизвестна —</p>
+                </div>
+                <div class="family-block">
+                    <h3>Отец</h3>
+                    <p class="family-name" id="family-father">— неизвестен —</p>
+                </div>
+                <div class="family-block">
+                    <h3>Пара</h3>
+                    <p class="family-name" id="family-mate">— нет —</p>
+                </div>
+                <div class="family-block">
+                    <h3>Котята</h3>
+                    <p class="family-name" id="family-kits">— нет —</p>
+                </div>
+            </div>
+
+            <!-- ЦЕНТР: История персонажа -->
+            <div class="info-col info-col--story">
+                <h2 class="info-col__title">История</h2>
+                <div class="story-list" id="story-list">
+                    <!-- Записи добавляются через JS -->
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ: Навыки + Состояние -->
+            <div class="info-col">
+                <h2 class="info-col__title">Навыки</h2>
+
+                <div class="skill-row">
+                    <span class="skill-name">Боевые умения</span>
+                    <span class="skill-value"><span id="skill-combat">0</span> (<span id="skill-combat-max">0/1</span>)</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Нюх</span>
+                    <span class="skill-value"><span id="skill-smell">0</span> (<span id="skill-smell-max">0/1</span>)</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Плавание</span>
+                    <span class="skill-value"><span id="skill-swim">0</span> (<span id="skill-swim-max">0/1</span>)</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Лазание</span>
+                    <span class="skill-value"><span id="skill-climb">0</span> (<span id="skill-climb-max">0/1</span>)</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Охота</span>
+                    <span class="skill-value"><span id="skill-hunt">0</span> (<span id="skill-hunt-max">0/1</span>)</span>
+                </div>
+
+                <h2 class="info-col__title info-col__title--mt">Состояние</h2>
+
+                <div class="state-row">
+                    <span class="state-name">Здоровье</span>
+                    <div class="state-bar"><div class="state-bar__fill state-bar__fill--hp" id="state-hp"></div></div>
+                    <span class="state-value" id="state-hp-value">0/100</span>
+                </div>
+                <div class="state-row">
+                    <span class="state-name">Сытость</span>
+                    <div class="state-bar"><div class="state-bar__fill state-bar__fill--hunger" id="state-hunger"></div></div>
+                    <span class="state-value" id="state-hunger-value">0/100</span>
+                </div>
+                <div class="state-row">
+                    <span class="state-name">Жажда</span>
+                    <div class="state-bar"><div class="state-bar__fill state-bar__fill--thirst" id="state-thirst"></div></div>
+                    <span class="state-value" id="state-thirst-value">0/100</span>
+                </div>
+                <div class="state-row">
+                    <span class="state-name">Сон</span>
+                    <div class="state-bar"><div class="state-bar__fill state-bar__fill--sleep" id="state-sleep"></div></div>
+                    <span class="state-value" id="state-sleep-value">0/100</span>
+                </div>
+                <div class="state-row">
+                    <span class="state-name">Нужда</span>
+                    <div class="state-bar"><div class="state-bar__fill state-bar__fill--need" id="state-need"></div></div>
+                    <span class="state-value" id="state-need-value">0/100</span>
+                </div>
+                <div class="state-row">
+                    <span class="state-name">Настроение</span>
+                    <div class="state-bar"><div class="state-bar__fill state-bar__fill--mood" id="state-mood"></div></div>
+                    <span class="state-value" id="state-mood-value">0/100</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/api.js"></script>
+    <script src="js/cat-api.js"></script>
+    <script src="js/game-field.js"></script>
+</body>
+</html>

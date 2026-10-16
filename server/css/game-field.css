@@ -1,0 +1,247 @@
+/* =========================================================
+   LifeCat — игровое поле
+   ========================================================= */
+
+.game-body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+}
+
+/* ---------- ИГРОВОЕ ПОЛЕ ---------- */
+.field {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.field__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* пока — градиент-заглушка. Картинка подставится через JS */
+    background-image: linear-gradient(135deg, #2a3a2a 0%, #1a1f2a 100%);
+    z-index: 0;
+}
+
+/* Верхняя панель */
+.field__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 100%);
+    z-index: 10;
+}
+
+.field__btn-mycat {
+    background: rgba(0,0,0,.4);
+    backdrop-filter: blur(6px);
+    border-color: rgba(255,255,255,.15);
+    color: #fff;
+}
+.field__btn-mycat:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.field__info {
+    display: flex;
+    gap: 24px;
+    font-size: 15px;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,.7);
+    font-weight: 600;
+}
+
+.field__time { color: #ffd591; }
+.field__season { color: #a8d8a8; }
+.field__year { color: #d8b8ff; }
+
+/* Нижняя панель действий */
+.field__bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px 24px 24px;
+    background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 100%);
+    z-index: 10;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 80px;
+    padding: 12px 6px;
+    background: rgba(0,0,0,.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius);
+    color: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    transition: .2s;
+}
+.action-btn:hover {
+    background: rgba(217,140,63,.3);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+.action-btn:active { transform: translateY(0); }
+
+.action-btn__icon { font-size: 26px; line-height: 1; }
+.action-btn__label { font-size: 13px; font-weight: 600; }
+
+/* Серая кнопка, если действие недоступно */
+.action-btn--disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ---------- ИНФОРМАЦИЯ ПОД ПОЛЕМ ---------- */
+.game-info {
+    background: var(--bg);
+    padding: 48px 24px 80px;
+    min-height: 100vh;
+}
+
+.game-info__grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.2fr;
+    gap: 24px;
+}
+
+@media (max-width: 1000px) {
+    .game-info__grid { grid-template-columns: 1fr 1fr; }
+    .info-col--story { grid-column: span 2; }
+}
+@media (max-width: 700px) {
+    .game-info__grid { grid-template-columns: 1fr; }
+    .info-col--story { grid-column: auto; }
+}
+
+.info-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+
+.info-col__title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.5px;
+}
+.info-col__title--mt { margin-top: 28px; }
+
+/* Семья */
+.family-block {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+}
+.family-block:last-child { border-bottom: none; margin-bottom: 0; }
+.family-block h3 {
+    font-size: 13px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.family-name {
+    color: var(--text);
+    font-size: 15px;
+}
+
+/* История */
+.story-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 460px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+.story-entry {
+    padding: 10px 14px;
+    background: var(--bg-alt);
+    border-left: 3px solid var(--primary);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text);
+}
+.story-entry__time {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+/* Навыки */
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 15px;
+}
+.skill-row:last-of-type { border-bottom: none; }
+.skill-name { color: var(--text-muted); }
+.skill-value { color: var(--primary); font-weight: 700; }
+
+/* Состояние */
+.state-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 60px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.state-name { color: var(--text-muted); }
+.state-bar {
+    height: 8px;
+    background: var(--bg-alt);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+.state-bar__fill {
+    height: 100%;
+    width: 0%;
+    transition: width .3s;
+    border-radius: 4px;
+}
+.state-bar__fill--hp      { background: linear-gradient(90deg, #d95c5c, #e07878); }
+.state-bar__fill--hunger  { background: linear-gradient(90deg, #d98c3f, #e9a35a); }
+.state-bar__fill--thirst  { background: linear-gradient(90deg, #4a8fd9, #6ea3e0); }
+.state-bar__fill--sleep   { background: linear-gradient(90deg, #7a5cc0, #9a7ce0); }
+.state-bar__fill--need    { background: linear-gradient(90deg, #b08a4a, #c9a36a); }
+.state-bar__fill--mood    { background: linear-gradient(90deg, #6ea36e, #8fc98f); }
+
+.state-value {
+    color: var(--text-muted);
+    font-size: 12px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
